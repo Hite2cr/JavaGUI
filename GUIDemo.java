@@ -15,6 +15,7 @@ public class GUIDemo extends JFrame
     private JPanel panel;
     private JButton biggerButton;
     private JButton smallerButton;
+    private JButton fullButton;
 
     /**
      * Set up the application.
@@ -33,6 +34,10 @@ public class GUIDemo extends JFrame
         panel.add(biggerButton);
         panel.add(smallerButton);
         setVisible(true);
+	
+	fullButton = new JButton("Fullscreen");
+	fullButton.addActionListener(new ButtonHandler());
+	panel.add(fullButton);
     }
 
     /**
@@ -53,11 +58,13 @@ public class GUIDemo extends JFrame
             {
                 setSize(size.width + 10, size.height + 10);
             }
-            else
+            else if (e.getSource().equals(smallerButton))
             {
                 setSize(size.width - 10, size.height - 10);
+            } else
+	    {
+		setSize(10000,1000); //changes proportion
             }
-
         }
     }
 
